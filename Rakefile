@@ -8,7 +8,7 @@ Echoe.new('ruby-opencv', '0.0.7') do |p|
   p.url            = "http://github.com/adamb/ruby-opencv"
   p.author         = "Masakazu Yonekura"
   p.email          = "masakazu.yonekura@gmail.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.ignore_pattern = ["tmp/*", "script/*", "ext/*.o"]
   p.development_dependencies = []
 end
 
