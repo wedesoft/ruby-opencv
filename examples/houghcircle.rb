@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 # houghcircle.rb
 require "rubygems"
-gem "opencv"
+#gem "opencv"
 require "opencv"
 include OpenCV
 
-original_window = GUI::Window.new "original"
-hough_window = GUI::Window.new "hough circles"
+original_window = GUI::Window.new "thewindow"
+# hough_window = GUI::Window.new "hough circles"
 
 image = IplImage::load "stuff.jpg"
 gray = image.BGR2GRAY
@@ -19,5 +19,6 @@ detect.each{|circle|
   puts "#{circle.center.x},#{circle.center.y} - #{circle.radius}"
   result.circle! circle.center, circle.radius, :color => CvColor::Red, :thickness => 3
 }
-hough_window.show result
+GUI::wait_key
+original_window.show result
 GUI::wait_key

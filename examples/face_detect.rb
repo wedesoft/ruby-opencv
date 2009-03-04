@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 # face_detect.rb
 require "rubygems"
-gem "opencv"
+# gem "opencv"
 require "opencv"
 
 include OpenCV
 
-window = GUI::Window.new("face detect")
+window = GUI::Window.new("thewindow")
 capture = CvCapture.open
-detector = CvHaarClassifierCascade::load("C:/Program Files/OpenCV/data/haarcascades/haarcascade_frontalface_alt.xml")
+detector = CvHaarClassifierCascade::load("haarcascade_frontalface_alt.xml")
 
 while true
   key = GUI::wait_key(1)

@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 # paint.rb
 require "rubygems"
-gem "opencv"
+# gem "opencv"
 require "opencv"
 
 include OpenCV
 
-window = GUI::Window.new("free canvas")
+window = GUI::Window.new("thewindow")
 canvas = CvMat.new(500, 500, 0, 3).fill!(0xFF) # create white canvas
 window.show canvas
 

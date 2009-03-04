@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 # convexhull.rb
-gem "opencv"
+# gem "opencv"
+require 'rubygems'
 require "opencv"
 require "pp"
 include OpenCV
 
-window = GUI::Window.new("convexhull")
+window = GUI::Window.new("thewindow", true)
 pp CvCapture::INTERFACE
 capture = CvCapture::open
 
