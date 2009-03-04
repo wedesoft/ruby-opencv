@@ -27,6 +27,7 @@ __NAMESPACE_BEGIN_WINDOW
 const char*
 GET_WINDOW_NAME(VALUE object)
 {
+  return "thewindow";
   void *handle = DATA_PTR(object);
   if (!handle)
     rb_raise(rb_eStandardError, "window handle error"); 
