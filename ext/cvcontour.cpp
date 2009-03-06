@@ -137,14 +137,12 @@ rb_approx_poly(int argc, VALUE *argv, VALUE self)
   rb_scan_args(argc, argv, "01", &approx_poly_option);  
   approx_poly_option = APPROX_POLY_OPTION(approx_poly_option);
   storage = cCvMemStorage::new_object();
-  /*
+
   CvSeq *contour = cvApproxPoly(CVCONTOUR(self), sizeof(CvContour), CVMEMSTORAGE(storage),
 				APPROX_POLY_METHOD(approx_poly_option),
 				APPROX_POLY_ACCURACY(approx_poly_option),
 				APPROX_POLY_RECURSIVE(approx_poly_option));
   return cCvSeq::new_sequence(cCvContour::rb_class(), contour, cCvPoint::rb_class(), storage);
-  */
-  return Qnil;
 }
 
 /*
