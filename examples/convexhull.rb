@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # convexhull.rb
-# gem "opencv"
+
 require 'rubygems'
 require "opencv"
 require "pp"
@@ -21,9 +21,14 @@ while true
   gray = image.BGR2GRAY
   bin = gray.threshold_binary(0x44, 0xFF)
   contours = bin.find_contours  
-  while contours    
-    image.poly_line! contours.approx(:accuracy => accuracy), :color => CvScalar::Red
-    contours.convexity_defects.each{|cd|
+  while contours
+    approx_contours = contours.approx_poly(:accuracy => accuracy)
+    if approx_contours.nil?
+      puts "No approx contours for accuracy #{accuracy}"
+      approx_contours = contours
+    end
+    image.poly_line! approx_contours, :color => CvScalar::Red
+    approx_contours.convexity_defects.each{|cd|
       image.circle! cd.start, 1, :color => CvScalar::Blue
       image.circle! cd.end, 1, :color => CvScalar::Blue
       image.circle! cd.depth_point, 1, :color => CvScalar::Blue
