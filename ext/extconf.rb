@@ -11,33 +11,26 @@ VC : ruby extconf.rb
 =end
 require "mkmf"
 
+# -I/usr/local/include/opencv  -L/usr/local/lib -lcxcore -lcv -lhighgui -lcvaux -lml 
+
 # option "opencv"
 # extconf.rb --with-opencv-lib=/path/to/opencv/lib
 # extconf.rb --with-opencv-include=/path/to/opencv/include
 
-dir_config("opencv", "/opt/local/include/opencv", "/opt/local/lib")
-if CONFIG["arch"].include?("darwin")
+dir_config("opencv", "/usr/local/include/opencv", "/usr/local/lib")
+# if CONFIG["arch"].include?("darwin")
 	dir_config("ffcall", "/opt/local/include", "/opt/local/lib")
-else
-	dir_config("ffcall", "/usr/local/include", "/usr/local/lib")
-end
+# else
+#   dir_config("ffcall", "/usr/local/include", "/usr/local/lib")
+# end
 
 opencv_libraries = ["cxcore", "cv", "highgui", "cvaux", "ml"]
 
 puts ">> check require libraries..."
-case CONFIG["arch"]
-when /mswin32/
-  have_library("msvcrt", nil)
-  opencv_libraries.each{|lib|
-    have_library(lib)
-  }
-else
-  opencv_libraries.each{|lib|
-    raise "lib#{lib} not found." unless have_library(lib)
-  }
-  #have_library("ml")
-  have_library("stdc++")
-end
+opencv_libraries.each{|lib|
+  raise "lib#{lib} not found." unless have_library(lib)
+}
+have_library("stdc++")
 
 # check require headers
 puts ">> check require headers..."
