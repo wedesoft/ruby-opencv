@@ -47,9 +47,9 @@ OpenCV Ruby Wrapper
   cd opencv-1.1.0/
 * Important:  Before we configure and build, we need to fix a small bug in the code.  Open up the file otherlibs/highgui/window_carbon.cpp in a text editor and make this change to line 645:
 
-  return NULL;
+ return NULL;
 should be changed to
-  return result;
+ return result;
 (This bug is tracked in sourceforge here: https://sourceforge.net/tracker/index.php?func=detail&aid=2668857&group_id=22870&atid=376677)
 * Now save the file and we can continue.  
   ./configure --with-carbon=yes CPPFLAGS="-I/opt/local/include -I/usr/include/malloc" LDFLAGS=-L/opt/local/lib
@@ -60,14 +60,14 @@ Finish installing:
 The last of the output from the install command will probably complain about  not being able to find ldconfig. That's fine. You're on a Mac; you don't need ldconfig (http://macosx.com/forums/mac-os-x-system-mac-software/5200-ldconfig.html).
 
 * Now install the gem
-  sudo gem install bantic-ruby-opencv  
+ sudo gem install bantic-ruby-opencv  
 
 * Check your work:
-  $ irb
-  irb> require 'rubygems'
-  => true
-  irb> require 'opencv'
-  => true
+ $ irb
+ irb&gt; require 'rubygems'
+ =&gt; true
+ irb&gt; require 'opencv'
+ =&gt; true
   
 == SYNOPSIS:
 
