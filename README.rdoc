@@ -53,7 +53,7 @@ should be changed to
 (This bug is tracked in sourceforge here: https://sourceforge.net/tracker/index.php?func=detail&aid=2668857&group_id=22870&atid=376677)
 * Now save the file and we can continue.  
   ./configure --with-carbon=yes CPPFLAGS="-I/opt/local/include -I/usr/include/malloc" LDFLAGS=-L/opt/local/lib
- After configure runs, it will print out a display showing which libraries are in use.  Double-check that the windowing system is using "Carbon/Mac OS X" and not gtk
+After configure runs, it will print out a display showing which libraries are in use.  Double-check that the windowing system is using "Carbon/Mac OS X" and not gtk
 Finish installing:
   make
   sudo make install
