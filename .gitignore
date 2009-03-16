@@ -1,3 +1,6 @@
 ext/*.o
 ext/Makefile
 ext/mkmf.log
+pkg
+doc
+Manifest
