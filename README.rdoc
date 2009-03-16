@@ -13,13 +13,65 @@ OpenCV Ruby Wrapper
 == FEATURES/PROBLEMS:
 
 * First release rubygems, Some OpenCV function wrapped.
+* Use of Carbon windows on Mac OS X is a little buggy, especially when called from the command line.
+* Sadly, use of X Windows as an alternative on Mac OS X is similarly buggy.
 
+== REQUIREMENTS:
+
+* OpenCV 1.0 or later.
+  http://sourceforge.net/projects/opencvlibrary/
+* OpenCV has several dependencies, see INSTALLATION INSTRUCTIONS below
+* ffcall (optional)
+  http://www.haible.de/bruno/packages-ffcall.html
+
+== INSTALLATION INSTRUCTIONS
+
+* OpenCV is a requirement.  Unfortunately there's a bug in the code that affects our ability to use Carbon windows, so we can't install from a port. We'll have to install from source.
+* First, these are the dependencies we'll need:
+ * atk 
+ * pango 
+ * jpeg 
+ * tiff 
+ * libpng 
+ * pkgconfig 
+ * gtk2 
+ * glib2 
+ * ffcall
+* Use ports to install them: $ sudo port install atk pango jpeg tiff libpng pkgconfig gtk2 glib2 ffcall
+* Ports is going to install them in /opt/local, which is where this gem will go looking for ffcall, so that will work well for us.
+
+* Next, download version 1.1pre1 of the opencv-linux package here: https://sourceforge.net/project/showfiles.php?group_id=22870
+* Navigate to where you downloaded it and:
+  tar xzvf opencv-1.1pre1.tar.gz
+  cd opencv-1.1.0/
+* Important:  Before we configure and build, we need to fix a small bug in the code.  Open up the file otherlibs/highgui/window_carbon.cpp in a text editor and make this change to line 645:
+  return NULL;
+should be changed to
+  return result;
+(This bug is tracked in sourceforge here: https://sourceforge.net/tracker/index.php?func=detail&aid=2668857&group_id=22870&atid=376677)
+* Now save the file and we can continue.  
+  ./configure --with-carbon=yes CPPFLAGS="-I/opt/local/include -I/usr/include/malloc" LDFLAGS=-L/opt/local/lib
+ After configure runs, it will print out a display showing which libraries are in use.  Double-check that the windowing system is using "Carbon/Mac OS X" and not gtk
+Finish installing:
+  make
+  sudo make install
+The last of the output from the install command will probably complain about  not being able to find ldconfig. That's fine. You're on a Mac; you don't need ldconfig (http://macosx.com/forums/mac-os-x-system-mac-software/5200-ldconfig.html).
+
+* Now install the gem
+  sudo gem install bantic-ruby-opencv  
+
+* Check your work:
+  $ irb
+  irb> require 'rubygems'
+  => true
+  irb> require 'opencv'
+  => true
+  
 == SYNOPSIS:
 
 # Show image via GUI Window.
 
 require "rubygems"
-gem "opencv"
 require "opencv"
 
 image = OpenCV::IplImage.load("sample.jpg")
@@ -28,17 +80,6 @@ window.show(image)
 OpenCV::GUI::wait_key
 
 # other sample code, see examples/*.rb
-
-== REQUIREMENTS:
-
-* OpenCV 1.0 or later.
-  http://sourceforge.net/projects/opencvlibrary/
-* ffcall (optional)
-  http://www.haible.de/bruno/packages-ffcall.html
-
-== INSTALL:
-
-gem install opencv
 
 == LICENSE:
 
