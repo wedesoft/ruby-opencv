@@ -37,7 +37,8 @@ OpenCV Ruby Wrapper
  * gtk2 
  * glib2 
  * ffcall
-* Use ports to install them: $ sudo port install atk pango jpeg tiff libpng pkgconfig gtk2 glib2 ffcall
+* Use ports to install them: 
+  $ sudo port install atk pango jpeg tiff libpng pkgconfig gtk2 glib2 ffcall
 * Ports is going to install them in /opt/local, which is where this gem will go looking for ffcall, so that will work well for us.
 
 * Next, download version 1.1pre1 of the opencv-linux package here: https://sourceforge.net/project/showfiles.php?group_id=22870
@@ -45,6 +46,7 @@ OpenCV Ruby Wrapper
   tar xzvf opencv-1.1pre1.tar.gz
   cd opencv-1.1.0/
 * Important:  Before we configure and build, we need to fix a small bug in the code.  Open up the file otherlibs/highgui/window_carbon.cpp in a text editor and make this change to line 645:
+
   return NULL;
 should be changed to
   return result;
