@@ -14,6 +14,7 @@ OpenCV Ruby Wrapper
 
 * First release rubygems, Some OpenCV function wrapped.
 * Use of Carbon windows on Mac OS X is a little buggy, especially when called from the command line.
+* Mouse interaction often causes segfaults on my Mac OS X (ruby 1.8.7).
 * Sadly, use of X Windows as an alternative on Mac OS X is similarly buggy.
 
 == REQUIREMENTS:
@@ -34,7 +35,7 @@ OpenCV Ruby Wrapper
  * tiff 
  * libpng 
  * pkgconfig 
- * gtk2 
+ * gtk2
  * glib2 
  * ffcall
 * Use ports to install them: 
@@ -71,24 +72,26 @@ The last of the output from the install command will probably complain about  no
 
 * Check your work:
  $ irb
- irb&gt; require 'rubygems'
- =&gt; true
- irb&gt; require 'opencv'
- =&gt; true
+ irb> require 'rubygems'
+ => true
+ irb> require 'opencv'
+ => true
   
 == SYNOPSIS:
 
 # Show image via GUI Window.
 
-require "rubygems"
-require "opencv"
+ require "rubygems"
+ require "opencv"
 
-image = OpenCV::IplImage.load("sample.jpg")
-window = OpenCV::GUI::Window.new("preview")
-window.show(image)
-OpenCV::GUI::wait_key
+ image = OpenCV::IplImage.load("sample.jpg")
+ window = OpenCV::GUI::Window.new("preview")
+ window.show(image)
+ OpenCV::GUI::wait_key
 
 # other sample code, see examples/*.rb
+
+Documentation is available here: http://doc.blueruby.mydns.jp/opencv/
 
 == LICENSE:
 
