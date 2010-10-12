@@ -28,7 +28,7 @@
 #endif
 
 extern "C"{
-#include <ruby/st.h>
+#include <st.h>
 #ifdef HAVE_CALLBACK_H
 #include <callback.h> // callhack.h is ffcall header
 #endif
