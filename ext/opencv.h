@@ -15,7 +15,7 @@
 
 /* include headers */
 #include <ruby.h>
-#include <version.h>
+/* #include <version.h> */
 
 #ifdef RUBY_WIN32_H
 #ifdef write
@@ -28,7 +28,7 @@
 #endif
 
 extern "C"{
-#include <st.h>
+#include <ruby/st.h>
 #ifdef HAVE_CALLBACK_H
 #include <callback.h> // callhack.h is ffcall header
 #endif
@@ -305,7 +305,7 @@ __NAMESPACE_END_OPENCV
 inline VALUE
 extract_options_from_args_bang(VALUE ary)
 {
-  return (RARRAY(ary)->len > 0 && rb_obj_is_kind_of(RARRAY(ary)->ptr[RARRAY(ary)->len -1], rb_cHash)) ? rb_ary_pop(ary) : rb_hash_new();
+  return (RARRAY_LEN(ary) > 0 && rb_obj_is_kind_of(RARRAY_PTR(ary)[RARRAY_LEN(ary) -1], rb_cHash)) ? rb_ary_pop(ary) : rb_hash_new();
 }
 
 /*

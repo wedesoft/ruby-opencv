@@ -17,14 +17,14 @@ require "mkmf"
 # extconf.rb --with-opencv-lib=/path/to/opencv/lib
 # extconf.rb --with-opencv-include=/path/to/opencv/include
 
-dir_config("opencv", "/usr/local/include/opencv", "/usr/local/lib")
+dir_config("opencv", "/usr/include/opencv", "/usr/lib")
 # if CONFIG["arch"].include?("darwin")
-	dir_config("ffcall", "/opt/local/include", "/opt/local/lib")
+	dir_config("ffcall", "/usr/include", "/usr/lib")
 # else
 #   dir_config("ffcall", "/usr/local/include", "/usr/local/lib")
 # end
 
-opencv_libraries = ["cxcore", "cv", "highgui", "cvaux", "ml"]
+opencv_libraries = ["cxcore", "cv", "highgui", "cvaux"]
 
 puts ">> check require libraries..."
 opencv_libraries.each{|lib|
