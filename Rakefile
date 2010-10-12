@@ -3,7 +3,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('ruby-opencv', '0.0.7') do |p|
+Echoe.new('opencv', '0.0.7') do |p|
   p.description    = "OpenCV wrapper for Ruby."
   p.url            = "http://github.com/adamb/ruby-opencv"
   p.author         = "Masakazu Yonekura"

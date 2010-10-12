@@ -4,3 +4,4 @@ ext/mkmf.log
 pkg
 doc
 Manifest
+opencv.gemspec
