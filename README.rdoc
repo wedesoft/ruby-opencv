@@ -28,8 +28,8 @@ OpenCV Ruby Wrapper
 == INSTALLATION INSTRUCTIONS
 
 === GNU/Linux
-* You need to install OpenCV. You can install OpenCV and the required dependencies using the package manager as follows:
- $ sudo aptitude install libcv-dev libcvaux-dev libhighgui-dev
+* You need to install OpenCV and libffcall. You can install these packages and the required dependencies using the package manager as follows:
+ $ sudo aptitude install libcv-dev libcvaux-dev libhighgui-dev libffcall1-dev
 * You also need to install 'rubygems' and 'echoe' if you don't have them installed already:
  $ sudo gem install rubygems echoe
 * Then you need to download and install this gem:
