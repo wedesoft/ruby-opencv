@@ -27,6 +27,26 @@ OpenCV Ruby Wrapper
 
 == INSTALLATION INSTRUCTIONS
 
+=== GNU/Linux
+* You need to install OpenCV. You can install OpenCV and the required dependencies using the package manager as follows:
+ $ sudo aptitude install libcv-dev libcvaux-dev libhighgui-dev
+* You also need to install 'rubygems' and 'echoe' if you don't have them installed already:
+ $ sudo gem install rubygems echoe
+* Then you need to download and install this gem:
+ $ git clone git://github.com/wedesoft/ruby-opencv.git
+ $ rake manifest
+ $ rake gem
+ $ sudo gem install pkg/opencv-*.gem
+
+* Check your work:
+ $ irb
+ irb> require 'rubygems'
+ => true
+ irb> require 'opencv'
+ => true
+
+=== MacOS
+
 * OpenCV is a requirement.  Unfortunately there's a bug in the code that affects our ability to use Carbon windows, so we can't install from a port. We'll have to install from source.
 * First, these are the dependencies we'll need:
  * atk 
